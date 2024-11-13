@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ingreso
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Nombre de usuario" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Contraseña" type="password" required>
+        </div>
+        <button class="btn btn-success mb-3" type="submit">Ingresar</button>
+    </form>
+    <div>o</div>
+    <form action="/register" method="get">
+        <button onclick="return confirmRegistration()" class="btn btn-secondary" type="submit">Registrarse</button>
+        <script>
+            function confirmRegistration() {
+                return confirm("¿Estás seguro/a de que quieres registrarte?");
+            }
+        </script>
+    </form>
+{% endblock %}

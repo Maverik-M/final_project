@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Crear peludo
+
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+        <h2>
+            Crear peludo
+        </h2>
+    </div>
+    <div class="col-md-3 mx-auto">
+        <form action="/create_dog" method="post" enctype="multipart/form-data">
+            <input autocomplete="off" autofocus class="form-control mx-auto mb-3" name="dog_id" placeholder="ID del peludo" type="number" required>
+            <input class="form-control mx-auto mb-3" name="dog_name" placeholder="Nombre del peludo" type="text" required>
+            <select name="race" class="form-control d-inline-block form-width" required>
+                <option disabled selected value="">Seleccionar raza</option>
+                {% for race in races %}
+                    <option value="{{ race["race_name"] }}">{{ race["race_name"] }}</option>
+                {% endfor %}
+            </select>
+            <div class="text-center mb-3"><small>Si no encuentras la raza, créala <a href="/create_race">aquí</a></small></div>
+            <input class="form-control mx-auto mb-3" id="human" name="human_name" placeholder="Nombre del tutor"  type="text" required>
+            <div id="h_suggestions" class="list-group"></div>
+            <div class="text-start mt-3 mb-1">
+                <strong><label>Agregar foto del peludo</label></strong>
+            </div>
+            <input type="file" class="form-control mx-auto mb-3" name="dog_image" required>
+            <button onclick="return confirmCreation()" type="submit" class="btn btn-success mb-3">Crear</button>
+
+
+            <script> function confirmCreation() {
+                return confirm("¿Estás seguro/a de que quieres crear este peludo?");
+            }
+            </script>
+        </form>
+    </div>
+{% endblock %}

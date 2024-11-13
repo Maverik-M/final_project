@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Usuarios
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+      <h2>
+        Usuarios en S2
+      </h2>
+    </div>
+
+    <table class="table caption-top table-striped mb-5">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre del peludo</th>
+            <th scope="col">Nombre del tutor</th>
+            <th scope="col">Número del tutor</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for client in clients %}
+            <tr>
+                <th scope="row">{{ client["id"] }}</th>
+                <td>{{ client["dog_name"] }}</td>
+                <td>{{ client["human_name"] }}</td>
+                <td>{{ client["phone_number"] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="mt-4 mb-2">
+        <h3>
+          Tutores
+        </h3>
+      </div>
+      <table class="table caption-top table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre del tutor</th>
+            <th scope="col">Número del tutor</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for human in humans %}
+            <tr>
+                <th scope="row">{{ human["id"] }}</th>
+                <td>{{ human["human_name"] }}</td>
+                <td>{{ human["phone_number"] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="mt-5">
+        <button onclick="window.location.href='/create_dog'" class="btn btn-outline-success">Crear peludo</button>
+        <button onclick="window.location.href='/modify_dog'" class="btn btn-outline-success">Modificar peludo</button>
+      </div>
+
+      <div class="mt-2">
+        <button onclick="window.location.href='/create_human'" class="btn btn-outline-success">Crear tutor</button>
+        <button onclick="window.location.href='/modify_human'" class="btn btn-outline-success">Modificar tutor</button>
+      </div>
+
+
+
+
+
+{% endblock %}
