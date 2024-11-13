@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Crear tutor
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+        <h2>
+            Crear tutor
+        </h2>
+    </div>
+    <form action="/create_human" method="post">
+        <input autocomplete="off" autofocus class="form-control mx-auto mb-3 w-auto" name="human_name" placeholder="Nombre y apellido" type="text" required>
+        <input class="form-control mx-auto mb-3 w-auto" name="phone_number" placeholder="Número de teléfono" type="number" required>
+        <button onclick="return confirmCreation()" type="submit" class="btn btn-success">Crear</button>
+
+        <script> function confirmCreation() {
+            return confirm("¿Estás seguro/a de que quieres crear este tutor?");
+        }
+        </script>
+    </form>
+{% endblock %}

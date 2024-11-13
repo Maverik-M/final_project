@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Crear raza
+{% endblock %}
+
+{% block main %}
+  <div class="mb-5">
+    <h2>
+        Crear raza
+    </h2>
+  </div>
+    <form action="/create_race" method="post">
+      <div class="mb-3 text-start">
+        <input autocomplete="off" autofocus class="form-control mx-auto mb-2 w-auto" name="race_name" placeholder="Nombre de la raza" type="text" required>
+      </div>
+      <button onclick="return confirmCreation()" type="submit" class="btn btn-success mb-5">Crear</button>
+
+      <script> function confirmCreation() {
+          return confirm("¿Estás seguro/a de que quieres crear esta raza?");
+      }
+      </script>
+    </form>
+
+    <table class="table caption-top table-striped">
+        <caption>Lista de razas</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Raza</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for race in races %}
+            <tr>
+                <th scope="row">{{ race["id"] }}</th>
+                <td>{{ race["race_name"] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bienvenida
+{% endblock %}
+
+{% block main %}
+    <h1 class="mb-5">
+        Bienvenido/a
+        <small class="text-body-secondary">{{ user["username"] }}</small>
+    </h1>
+    <div class="mt-10">
+        <h2 class="text-center">
+            Instrucciones para el uso del portal
+        </h2>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Uso general de&nbsp; <strong>Usuarios</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body text-start text-justify">
+                        <ol class="list-group list-group-numbered">
+                            <div class="mb-2"> Las siguientes opciones están disponibles en el menu <strong>Usuarios</strong> de la barra de navegación superior:</div>
+                            <li class="list-group-item"><strong>Crea un tutor/peludo: </strong>En este apartado podras crear un tutor y/o un peludo. Recuerda que un peludo no puede ser creado sin un tutor.</li>
+                            <li class="list-group-item"><strong>Modificar un tutor/peludo: </strong>En esta parte podras modificar y/o crear un tutor y/o un peludo. Recuerda que un tutor no puede ser eliminado si tiene asignado un peludo.</li>
+                            <li class="list-group-item"><strong>Ver usuarios: </strong>En este apartado podras ver todos los peludos, los tutores y sus datos.</li>
+                            <li class="list-group-item"><strong>Busca un peludo: </strong> En esta parte podrás buscar el peludo de la siguiente manera:
+                                <div class="ms-3 text-start">
+                                    <div class="mb-1 mt-2"><strong>1.</strong> Empieza a ingresar las iniciales del nombre del perro. A medida que avances, la plataforma te dará sugerencias del nombre del peludo.</div>
+                                    <div class="mb-1">
+                                    <div class="mb-0">
+                                        <strong>2.</strong> Una vez veas el nombre del peludo deseado, da un clic al nombre. (En caso de que existan dos peludos con el mismo nombre, aparecerán ambos nombres, el peludo se diferenciará en este caso por el nombre del tutor
+                                    </div>
+                                    <div class="mb-2"> <strong>Nota:</strong> En caso de que no veas el nombre del peludo, es porque probablemente no existe y por lo tanto debes creerlo</div>
+                                    </div >
+                                    <div class="mb-1"><strong>3.</strong> El nombre del tutor se seleccionará automáticamente. Recuerda cambiar el nombre del peludo en caso de que se encuentre duplicado.</div>
+                                    <div class="mb-1"><strong>4.</strong> Presiona buscar.</div>
+                                    <div class="mb-3"><strong>5.</strong> Llegaras a la página del peludo. En esta página podrás ver todos los cursos y la sesiones. Adicionalmente, también podrás editar las sesiones y los cursos usando los botones asociados a cada uno/a</div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Uso general de&nbsp; <strong>Cursos</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body text-start text-justify">
+                        <div class="mb-2"> Las siguientes opciones están disponibles en el menu <strong>Cursos</strong> de la barra de navegación superior:</div>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item"><strong>Ver cursos: </strong>En esta parte podrás ver todos los cursos.</li>
+                            <li class="list-group-item"><strong>Crear curso:</strong>En esta parte podrás crear un curso.</li>
+                            <li class="list-group-item"><strong>Modificar curso: </strong>En esta parte podrás modificar o eliminar un curso.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Políticas generales el manejo de datos
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="accordion-body text-start text-justify">
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">No se puede crear un peludo sin un tutor</li>
+                            <li class="list-group-item">Al crear un peludo o un tutor, todos los campos deben ser llenados</li>
+                            <li class="list-group-item">El ID del peludo solo puede ser en formato de número y debe ser el asignado por la compañía</li>
+                            <li class="list-group-item">Cuando se agregue una imágen de un peludo, se debe recortar la imágen para que la cara de este quede en todo el centro.</li>
+                            <li class="list-group-item">Cuando se modifique un peludo o tutor, solo debes ingresar los datos que deseas modificar. No es necesario llenar todos los campos</li>
+                            <li class="list-group-item">El ingreso, modificación y/o eliminación puede arrojar errores. En caso de que esto suceda, comunícate con tu jefe inmediato.</li>
+                            <li class="list-group-item">La información de la base de datos es muy importanate. Es por esto que la eliminación o modificación de cualquier peludo y/o usuario debe ser autorizado por la Dirección de Somos2</li>
+                            <li class="list-group-item">La creación y edición de los cursos y la sesiones solo puede ser realizada por el profesional encargado del proceso de educación canina</li>
+                            <li class="list-group-item">No se puede eliminar un tutor si tiene un peludo relacionado</li>
+                            <li class="list-group-item">No se puede eliminar un curso si tiene una sesión relacionada</li>
+                        </ol>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+{% endblock %}

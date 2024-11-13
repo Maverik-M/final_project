@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Modificar estado del curso
+
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+        <h2>
+            Modificar estado del curso
+        </h2>
+    </div>
+        <form action="/modify_c_courses/{{ id }}" method="post">
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="course" class="form-label"><strong>Curso:</strong></label>
+                    <select name="course" class="form-control d-inline-block form-width" required>
+                        <option value="{{ course["course_name"] }}" selected>{{ course["course_name"] }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="status" class="form-label"><strong>Estado del curso:</strong></label>
+                    <select name="status" class="form-control d-inline-block form-width" required>
+                        <option value="En proceso" {% if status == "En proceso" %}selected{% endif %}>En proceso</option>
+                        <option value="Reprobado" {% if status == "Reprobado" %}selected{% endif %}>Reprobado</option>
+                        <option value="Retirado" {% if status == "Retirado" %}selected{% endif %}>Retirado</option>
+                        <option value="Finalizado" {% if status == "Finalizado" %}selected{% endif %}>Finalizado</option>
+                        <option value="Graduado" {%if status == "Graduado" %}selected{% endif %}>Graduado</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="return confirmEdition()" type="submit" class="btn btn-success mb-3">Modificar</button>
+        </form>
+
+        <script>
+
+        function confirmEdition() {
+            return confirm("¿Estás seguro/a de que quieres efectuar esta edición?");
+        }
+
+        </script>
+
+{% endblock %}

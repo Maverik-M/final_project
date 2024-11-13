@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Editar sesión
+
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+        <h2>
+            Editar sesión
+        </h2>
+    </div>
+        <form action="/edit_session/{{ session["id"] }}" method="post">
+            <input type="hidden" name="action" value="edit">
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="dog_name" class="form-label"><strong>Nombre del peludo:</strong></label>
+                    <input autocomplete="off" autofocus class="form-control mb-3" name="dog_name" id="dog_name" type="text" placeholder="{{ dog["dog_name"] }}" required>
+                    <div id="dog_suggestions" class="list-group"></div>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="human_name" class="form-label"><strong>Nombre del tutor:</strong></label>
+                    <select class="form-control mx-auto mb-2" name="human_name" id="human_select" required>
+                        <option value="">Seleccionar un tutor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="course" class="form-label"><strong>Curso:</strong></label>
+                    <select name="course" class="form-control d-inline-block form-width">
+                        {% for course in courses %}
+                            <option value="{{ course["course_name"] }}" {% if course["course_name"] == i_course["course_name"] %}selected{% endif %}>{{ course["course_name"] }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="text-center mt-2"><small>Si no encuentras el curso, créalo <a href="/create_course">aquí</a></small></div>
+                </div>
+            </div>
+            <div class="mt-4 mb-4">
+                <div class="col-md-3 mx-auto">
+                    <label for="description" class="form-label"><strong>Descripción de la sesión</strong></label>
+                    <textarea class="form-control" name="description" id="description" rows="5">{{ description }}</textarea>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="status" class="form-label"><strong>Estado del curso:</strong></label>
+                    <select name="status" class="form-control d-inline-block form-width">
+                        <option value="En proceso" {% if status == "En proceso" %}selected{% endif %}>En proceso</option>
+                        <option value="Reprobado" {% if status == "Reprobado" %}selected{% endif %}>Reprobado</option>
+                        <option value="Retirado" {% if status == "Retirado" %}selected{% endif %}>Retirado</option>
+                        <option value="Finalizado" {% if status == "Finalizado" %}selected{% endif %}>Finalizado</option>
+                        <option value="Graduado" {%if status == "Graduado" %}selected{% endif %}>Graduado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <div class="col-md-3 mx-auto">
+                    <label for="level" class="form-label"><strong>Nivel:</strong></label>
+                    <select name="level" class="form-control d-inline-block form-width">
+                        <option value="1" {% if level == "1" %}selected{% endif %}>1</option>
+                        <option value="2" {% if level == "2" %}selected{% endif %}>2</option>
+                        <option value="3" {% if level == "3" %}selected{% endif %}>3</option>
+                        <option value="4" {% if level == "4" %}selected{% endif %}>4</option>
+                        <option value="5" {% if level == "5" %}selected{% endif %}>5</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="return confirmEdition()" type="submit" class="btn btn-success mb-3">Editar</button>
+        </form>
+
+        <form action="/edit_session/{{ session["id"] }}" method="post">
+            <input type="hidden" name="action" value="delete">
+            <div class="col-md-3 mx-auto">
+                <button onclick="return confirmDeletion()" type="submit" name="deletion" class="btn btn-danger mb-3">Eliminar sesión</button>
+            </div>
+        </form>
+
+        <script>
+
+        function confirmDeletion() {
+            return confirm("¿Estás seguro/a de que quieres eliminar esta sesión?");
+        }
+
+        function confirmEdition() {
+            return confirm("¿Estás seguro/a de que quieres efectuar esta edición?");
+        }
+
+        </script>
+
+{% endblock %}

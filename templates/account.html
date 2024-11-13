@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Mi cuenta
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="mb-3" style="margin-bottom: 40px;"><strong>Cambiar contraseña</strong></div>
+    <form action="/account" method="post">
+        <input type="hidden" name="id" value="password">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" placeholder="Contraseña actual" name="old_password" type="password" required> <p> </p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" placeholder="Contraseña nueva" name="password" type="password" required> <p> </p>
+        <input autocomplete="off" class="form-control mx-auto w-auto" placeholder="Confirma la contraseña" name="confirmation" type="password" required> <p> </p>
+        <button onclick="return confirmPasswordChange()" class="btn btn-success" type="submit">Cambiar contraseña</button>
+
+        <script> function confirmPasswordChange() {
+            return confirm("¿Estás seguro/a de que quieres cambiar la contraseña?");
+        }
+        </script>
+    </form>
+
+{% endblock %}

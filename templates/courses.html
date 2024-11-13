@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cursos
+{% endblock %}
+
+{% block main %}
+    <div class="mb-5">
+      <h2>
+          Todos los cursos
+      </h2>
+    </div>
+
+    <table class="table caption-top table-striped">
+        <caption>Lista de cursos</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre del curso</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for course in courses %}
+            <tr>
+                <th scope="row">{{ course["id"] }}</th>
+                <td>{{ course["course_name"] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="mt-5">
+        <button onclick="window.location.href='/create_course'" class="btn btn-outline-success">Crear curso</button>
+        <button onclick="window.location.href='/modify_course'" class="btn btn-outline-success">Modificar cursos</button>
+      </div>
+
+{% endblock %}
